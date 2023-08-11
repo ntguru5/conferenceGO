@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from common.json import ModelEncoder
 from .models import Conference, Location, State
-from .acls import get_picture_url
+from .acls import get_picture_url, get_weather_data
 from django.views.decorators.http import require_http_methods
 import json
 
