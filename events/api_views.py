@@ -111,6 +111,8 @@ def api_show_conference(request, id):
                 {"message": "Invalid location id"},
                 status=400,
             )
+        # get weather from OpenWeather API
+
         Conference.objects.filter(id=id).update(**content)
         conference = Conference.objects.get(id=id)
         return JsonResponse(
@@ -168,7 +170,7 @@ def api_list_locations(request):
                 {"message": "Invalid state abbreviation"},
                 status=400,
             )
-
+        # get photo of city from Pexels
         state_full_name = state.name
         picture_url = get_picture_url(f'{content["city"]} {state_full_name}')
         content["picture_url"] = picture_url
