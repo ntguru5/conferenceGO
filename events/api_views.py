@@ -31,6 +31,7 @@ class ConferenceDetailEncoder(ModelEncoder):
         "ends",
         "created",
         "updated",
+        "weather",
         "location",
     ]
     encoders = {
@@ -111,7 +112,9 @@ def api_show_conference(request, id):
                 {"message": "Invalid location id"},
                 status=400,
             )
-        # get weather from OpenWeather API
+        # Use the city and state abbreviation of the Conference's Location
+        # to call the get_weather_data ACL function and get back a dictionary
+        # that contains the weather data
 
         Conference.objects.filter(id=id).update(**content)
         conference = Conference.objects.get(id=id)
